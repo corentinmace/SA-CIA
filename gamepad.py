@@ -1,6 +1,7 @@
 """
 This module allows generating every possible inputs
 """
+
 import vgamepad as vg
 import time
 
@@ -28,20 +29,29 @@ def reset():
 def smash():
     gamepad.press_button(button=vg.DS4_BUTTONS.DS4_BUTTON_CIRCLE)
     gamepad.update()
-
+    time.sleep(0.2)
+    gamepad.release_button(button=vg.DS4_BUTTONS.DS4_BUTTON_CIRCLE)
+    gamepad.update()
 
 def attack():
     gamepad.press_button(button=vg.DS4_BUTTONS.DS4_BUTTON_CROSS)
     gamepad.update()
-
+    time.sleep(0.2)
+    gamepad.release_button(button=vg.DS4_BUTTONS.DS4_BUTTON_CROSS)
+    gamepad.update()
 
 def special():
     gamepad.press_button(button=vg.DS4_BUTTONS.DS4_BUTTON_SQUARE)
     gamepad.update()
-
+    time.sleep(0.2)
+    gamepad.release_button(button=vg.DS4_BUTTONS.DS4_BUTTON_SQUARE)
+    gamepad.update()
 
 def jump():
     gamepad.press_button(button=vg.DS4_BUTTONS.DS4_BUTTON_TRIANGLE)
+    gamepad.update()
+    time.sleep(0.2)
+    gamepad.release_button(button=vg.DS4_BUTTONS.DS4_BUTTON_TRIANGLE)
     gamepad.update()
 
 #-------------------------------------------------
@@ -51,34 +61,42 @@ def jump():
 def light_left():
     gamepad.left_joystick_float(x_value_float=-0.5, y_value_float=0)
     gamepad.update()
+    resetStick()
 
 def full_left():
     gamepad.left_joystick_float(x_value_float=-1, y_value_float=0)
     gamepad.update()
+    resetStick()
 
 def light_right():
     gamepad.left_joystick_float(x_value_float=0.5, y_value_float=0)
     gamepad.update()
+    resetStick()
 
 def full_right():
     gamepad.left_joystick_float(x_value_float=1, y_value_float=0)
     gamepad.update()
+    resetStick()
 
 def light_up():
     gamepad.left_joystick_float(x_value_float=0, y_value_float=0.5)
     gamepad.update()
+    resetStick()
 
 def full_up():
     gamepad.left_joystick_float(x_value_float=0, y_value_float=1)
     gamepad.update()
+    resetStick()
 
 def light_down():
     gamepad.left_joystick_float(x_value_float=0, y_value_float=-0.5)
     gamepad.update()
+    resetStick()
 
 def full_down():
     gamepad.left_joystick_float(x_value_float=0, y_value_float=-1)
-    gamepad.update() 
+    gamepad.update()
+    resetStick() 
 
 def precise(x: float, y: float):
     """
@@ -86,6 +104,12 @@ def precise(x: float, y: float):
     @params Must be in a range of -1 and 1
     """
     gamepad.left_joystick_float(x_value_float=x, y_value_float=y)
+    gamepad.update()
+    resetStick()
+
+def resetStick():
+    time.sleep(0.3)
+    gamepad.left_joystick_float(x_value_float=0, y_value_float=0)
     gamepad.update()
 
 
@@ -99,6 +123,9 @@ def r_trigger(value: float=1):
     """
     gamepad.right_trigger_float(value_float=1)
     gamepad.update()
+    time.sleep(0.3)
+    gamepad.right_trigger_float(value_float=0)
+    gamepad.update()
 
 def l_trigger(value: float=1):
     """
@@ -106,4 +133,9 @@ def l_trigger(value: float=1):
     """
     gamepad.left_trigger_float(value_float=value)
     gamepad.update()
+    time.sleep(0.3)
+    gamepad.left_trigger_float(value_float=0)
+    gamepad.update()
+
+
 

@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    background: #191919;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+button {
+    background: black;
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all 0.15s;
+    box-sizing: border-box;
+    display: block;
+    margin: 20px auto 0 auto;
+    width: 180px;
+    font-size: 16px;
+    line-height: 220%;
+}
+
+button:hover {
+    background: white;
+    color: black;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: start;
+    padding-left: 20px
+}
+
+.form-group {
+    margin-right: 10px;
+}
