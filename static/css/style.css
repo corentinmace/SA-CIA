@@ -40,3 +40,10 @@ button:hover {
 .form-group {
     margin-right: 10px;
 }
+
+.video_feed {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
