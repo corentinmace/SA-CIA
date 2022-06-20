@@ -1,7 +1,6 @@
 import cv2 as cv
 import numpy as np
 
-#capture = cv.imread('images/capture.png', cv.IMREAD_UNCHANGED)
 def searchInImage(haystack):
 
     capture = haystack
