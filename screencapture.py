@@ -5,8 +5,8 @@ from win32api import GetSystemMetrics
 import win32gui
 from object_recognition import searchInImage
 
-# width = GetSystemMetrics(0)
-# height = GetSystemMetrics(1)
+width = GetSystemMetrics(0)
+height = GetSystemMetrics(1)
 toplist, winlist = [], []
 def enum_cb(hwnd, results):
     winlist.append((hwnd, win32gui.GetWindowText(hwnd)))
@@ -19,7 +19,7 @@ def gen_frames():
         hwnd = window[0]
         bbox = win32gui.GetWindowRect(hwnd)
         
-        img = ImageGrab.grab(bbox)
+        img = ImageGrab.grab(bbox, all_screens=True, include_layered_windows=True)
         img_np = np.array(img)
         oldframe = cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB)
 
@@ -27,3 +27,4 @@ def gen_frames():
         ret, buffer = cv2.imencode('.jpg', frame)
         frame = buffer.tobytes()
         yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
